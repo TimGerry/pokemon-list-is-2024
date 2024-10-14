@@ -38,4 +38,33 @@
     <li>Poké ball ({{200 | currency : 'JPY' }})</li>
     <li>Potion ({{300 | currency : 'JPY' }})</li>
   </ul>
+
+  <h2>Shopping Cart:</h2>
+  <ul>
+    @for (item of shoppingList; track item.product) {
+      <li>{{ item.product }} x {{ item.amount }}</li>
+    }
+  </ul>
+
+  <h2>Add shopping item to cart:</h2>
+  <form #shopForm="ngForm" novalidate (ngSubmit)="submit(shopForm)">
+    <div>
+      <label for="productInput">Product:</label>
+      <input #productFormInput="ngModel" type="text" name="product" id="productInput" [(ngModel)]="shoppingItem.product" required minlength="2">
+      @if(productFormInput.touched && productFormInput.hasError('required')) {
+        <p class="text-danger">Product name is required!</p>
+      }
+      @if(productFormInput.touched && productFormInput.hasError('minlength')) {
+        <p class="text-danger">Product name must be 2 characters or more!</p>
+      }
+    </div>
+    <div >
+      <label for="amountInput">Amount:</label>
+      <input #amountFormInput="ngModel" type="number" name="amount" id="amountInput" [(ngModel)]="shoppingItem.amount" min="1">
+      @if(amountFormInput.touched && amountFormInput.hasError('min')) {
+        <p class="text-danger">Amount must be greater than 0!</p>
+      }
+    </div>
+    <button [disabled]="shopForm.invalid">Add to cart!</button>
+  </form>
 </div>

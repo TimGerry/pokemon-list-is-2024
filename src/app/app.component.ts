@@ -3,11 +3,13 @@ import { RouterOutlet } from '@angular/router';
 import { Pokemon } from './models/pokemon.model';
 import { OptionalPipe } from './pipes/optional.pipe';
 import { CurrencyPipe, DatePipe } from '@angular/common';
+import { FormsModule, NgForm } from '@angular/forms';
+import { ShoppingItem } from './models/shopping-item.model';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, OptionalPipe, CurrencyPipe, DatePipe],
+  imports: [RouterOutlet, OptionalPipe, CurrencyPipe, DatePipe, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -15,6 +17,12 @@ export class AppComponent {
   title = 'Info Support Pokémon App';
   today = new Date();
   pokemonList: Pokemon[] | undefined; 
+
+  shoppingList: ShoppingItem[] = [];
+  shoppingItem: ShoppingItem = {
+    product: '',
+    amount: 0
+  }; 
 
   constructor() {
     setTimeout(() => {
@@ -32,5 +40,14 @@ export class AppComponent {
 
   clickPokemon(pokemon: Pokemon) {
     window.alert(`${pokemon.name} used ${pokemon.attack}!`);
+  }
+
+  submit(form: NgForm) {
+    if (form.invalid) {
+      console.log('you cheecky basterd');
+      return;
+    }
+    this.shoppingList.push({ ...this.shoppingItem });
+    form.reset();
   }
 }
