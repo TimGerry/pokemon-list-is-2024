@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Pokemon } from './models/pokemon.model';
+import { OptionalPipe } from './pipes/optional.pipe';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, OptionalPipe, CurrencyPipe, DatePipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Info Support Pokémon App';
+  today = new Date();
   pokemonList: Pokemon[] | undefined; 
 
   constructor() {

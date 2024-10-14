@@ -23,7 +23,7 @@
           <tr (click)="clickPokemon(pokemon)">
             <td [class.electric]="pokemon.type === 'electric'">{{pokemon.name}}</td>
             <td>{{pokemon.type}}</td>
-            <td>{{pokemon.type2}}</td>
+            <td>{{ pokemon.type2 | optional : '-' }}</td>
             <td>{{pokemon.level}}</td>
             <td>{{pokemon.attack}}</td>
             <td><img class="miniature" [src]="getPokemonImage(pokemon)" [alt]="pokemon.name"></td>
@@ -32,4 +32,10 @@
       </tbody>
     </table>
   }
+
+  <h2>Pokémon shop (prices for {{ today | date : 'dd/MM/yyyy' }})</h2>
+  <ul>
+    <li>Poké ball ({{200 | currency : 'JPY' }})</li>
+    <li>Potion ({{300 | currency : 'JPY' }})</li>
+  </ul>
 </div>
