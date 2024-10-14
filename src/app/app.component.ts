@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Pokemon } from './models/pokemon.model';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Info Support Pokémon App';
-  pokemonList!: any; 
+  pokemonList: Pokemon[] | undefined; 
 
   constructor() {
     setTimeout(() => {
@@ -22,11 +23,11 @@ export class AppComponent {
     }, 1000);
   }
 
-  getPokemonImage(pokemon: any) {
+  getPokemonImage(pokemon: Pokemon) {
     return `https://img.pokemondb.net/artwork/avif/${pokemon.name}.avif`
   }
 
-  clickPokemon(pokemon: any) {
+  clickPokemon(pokemon: Pokemon) {
     window.alert(`${pokemon.name} used ${pokemon.attack}!`);
   }
 }
