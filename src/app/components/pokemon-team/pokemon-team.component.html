@@ -1,0 +1,12 @@
+<h2>Pokémon team</h2>
+
+@if (!pokemonList) {
+  <app-loading>
+    <b>Loading...</b>
+  </app-loading>
+}
+@else {
+    <app-pokemon-list [pokemonList]="pokemonList" (pokemonClicked)="attack($event)"></app-pokemon-list>
+}
+
+<app-pokemon-form></app-pokemon-form>
