@@ -41,7 +41,7 @@ describe('PokemonTeamComponent', () => {
     expect(actual).toHaveSize(expected.length);
   });
 
-  fdescribe('Async scenarios', () => {
+  describe('Async scenarios', () => {
     // FAILS IN AFTER ALL
     xit('should run async 1', () => {
       const p = new Promise(res => {

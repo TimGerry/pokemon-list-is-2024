@@ -19,7 +19,7 @@ export class PokemonTeamComponent implements OnInit {
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
-    this.pokemonList = this.pokemonService.getAll();
+    this.pokemonService.getAll().subscribe(data => this.pokemonList = data);
   }
 
   attack(pokemon: Pokemon) {
