@@ -21,8 +21,4 @@ export class PokemonTeamComponent implements OnInit {
   ngOnInit(): void {
     this.pokemonService.getAll().subscribe(data => this.pokemonList = data);
   }
-
-  attack(pokemon: Pokemon) {
-    window.alert(`${pokemon.name} used ${pokemon.attack}!`);
-  }
 }

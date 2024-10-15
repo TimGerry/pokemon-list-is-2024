@@ -16,4 +16,8 @@ export class PokemonService {
   getAll(): Observable<Pokemon[]> {
     return this.httpClient.get<Pokemon[]>(BASE_URL);
   }
+
+  get(id: string): Observable<Pokemon> {
+    return this.httpClient.get<Pokemon>(`${BASE_URL}/${id}`);
+  }
 }

@@ -11,6 +11,7 @@
     </thead>
     <tbody>
       @for (pokemon of pokemonList; track pokemon.id) {
+        <!-- <tr [routerLink]="pokemon.id"> -->
         <tr (click)="clickPokemon(pokemon)">
           <td [class.electric]="pokemon.type === 'electric'">{{pokemon.name}}</td>
           <td>{{pokemon.type}}</td>
