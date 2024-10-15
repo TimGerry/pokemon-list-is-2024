@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../../models/pokemon.model';
 import { OptionalPipe } from '../../pipes/optional.pipe';
 import { PokemonFormComponent } from '../pokemon-form/pokemon-form.component';
 import { PokemonListComponent } from '../pokemon-list/pokemon-list.component';
 import { LoadingComponent } from '../loading/loading.component';
+import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-team',
@@ -12,17 +13,13 @@ import { LoadingComponent } from '../loading/loading.component';
   templateUrl: './pokemon-team.component.html',
   styleUrl: './pokemon-team.component.scss'
 })
-export class PokemonTeamComponent {
+export class PokemonTeamComponent implements OnInit {
   pokemonList: Pokemon[] | undefined; 
 
-  constructor() {
-    setTimeout(() => {
-      this.pokemonList = [
-        { id: 'charmander', name: 'charmander', type: 'fire', level: 5, attack: 'ember' },
-        { id: 'blaziken', name: 'blaziken', type: 'fire', type2: 'fighting', level: 36, attack: 'flamethrower' },
-        { id: 'pikachu', name: 'pikachu', type: 'electric', level: 5, attack: 'thundershock' }
-      ];
-    }, 1000);
+  constructor(private pokemonService: PokemonService) {}
+
+  ngOnInit(): void {
+    this.pokemonList = this.pokemonService.getAll();
   }
 
   attack(pokemon: Pokemon) {

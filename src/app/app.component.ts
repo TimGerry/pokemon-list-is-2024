@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ShopComponent } from './components/shop/shop.component';
 import { PokemonTeamComponent } from './components/pokemon-team/pokemon-team.component';
+import { APP_TITLE } from './app.config';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +12,5 @@ import { PokemonTeamComponent } from './components/pokemon-team/pokemon-team.com
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Info Support Pokémon App';
+  constructor(@Inject(APP_TITLE) public title: string) {}
 }
