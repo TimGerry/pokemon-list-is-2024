@@ -1,15 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../../models/pokemon.model';
-import { OptionalPipe } from '../../pipes/optional.pipe';
-import { PokemonFormComponent } from '../pokemon-form/pokemon-form.component';
-import { PokemonListComponent } from '../pokemon-list/pokemon-list.component';
-import { LoadingComponent } from '../loading/loading.component';
 import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-team',
-  standalone: true,
-  imports: [PokemonListComponent, PokemonFormComponent, LoadingComponent],
   templateUrl: './pokemon-team.component.html',
   styleUrl: './pokemon-team.component.scss'
 })

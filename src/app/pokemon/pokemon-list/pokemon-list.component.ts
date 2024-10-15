@@ -1,13 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Pokemon } from '../../models/pokemon.model';
-import { OptionalPipe } from '../../pipes/optional.pipe';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
-  standalone: true,
-  imports: [OptionalPipe],
-  // imports: [OptionalPipe, RouterModule],
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.scss'
 })

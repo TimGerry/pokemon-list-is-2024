@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { PokemonTeamComponent } from './components/pokemon-team/pokemon-team.component';
+import { PokemonTeamComponent } from './pokemon/pokemon-team/pokemon-team.component';
 import { ShopComponent } from './components/shop/shop.component';
-import { PokemonTrainingComponent } from './components/pokemon-training/pokemon-training.component';
+import { PokemonTrainingComponent } from './pokemon/pokemon-training/pokemon-training.component';
 import { pokemonResolver } from './resolvers/pokemon.resolver';
 import { moneyGuard } from './guards/money.guard';
 
