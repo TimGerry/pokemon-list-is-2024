@@ -9,13 +9,15 @@ import { OptionalPipe } from '../pipes/optional.pipe';
 import { RouterModule } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HoverDirective } from '../directives/hover.directive';
+import { UnlessDirective } from '../directives/unless.directive';
 
 
 
 @NgModule({
   declarations: [PokemonFormComponent, PokemonListComponent, PokemonTeamComponent, PokemonTrainingComponent],
   imports: [
-    CommonModule, LoadingComponent, OptionalPipe, RouterModule, ReactiveFormsModule
+    CommonModule, LoadingComponent, OptionalPipe, RouterModule, ReactiveFormsModule, HoverDirective, UnlessDirective
   ],
   providers: [ PokemonService ]
 })

@@ -20,7 +20,7 @@
       "name": "pikachu",
       "type": "electric",
       "attack": "thundershock",
-      "level": 5
+      "level": 500
     },
     {
       "id": "mudkip",

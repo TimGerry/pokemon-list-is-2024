@@ -13,10 +13,10 @@
       @for (pokemon of pokemonList; track pokemon.id) {
         <!-- <tr [routerLink]="pokemon.id"> -->
         <tr (click)="clickPokemon(pokemon)">
-          <td [class.electric]="pokemon.type === 'electric'">{{pokemon.name}}</td>
+          <td appHover="green" [class.electric]="pokemon.type === 'electric'">{{pokemon.name}}</td>
           <td>{{pokemon.type}}</td>
           <td>{{ pokemon.type2 | optional : '-' }}</td>
-          <td>{{pokemon.level}}</td>
+          <td>{{pokemon.level}} <p *appUnless="[pokemon.level < 1, pokemon.level > 100]" class="text-danger">ILLEGAL LEVEL!!!</p></td>
           <td>{{pokemon.attack}}</td>
           <td><img class="miniature" [src]="getPokemonImage(pokemon)" [alt]="pokemon.name"></td>
         </tr>
