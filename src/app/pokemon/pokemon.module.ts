@@ -8,13 +8,14 @@ import { LoadingComponent } from '../components/loading/loading.component';
 import { OptionalPipe } from '../pipes/optional.pipe';
 import { RouterModule } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [PokemonFormComponent, PokemonListComponent, PokemonTeamComponent, PokemonTrainingComponent],
   imports: [
-    CommonModule, LoadingComponent, OptionalPipe, RouterModule
+    CommonModule, LoadingComponent, OptionalPipe, RouterModule, ReactiveFormsModule
   ],
   providers: [ PokemonService ]
 })

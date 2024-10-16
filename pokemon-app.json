@@ -1,26 +1,34 @@
 {
   "pokemon": [
-  {
-    "id": "charmander",
-    "name": "charmander",
-    "type": "fire",
-    "attack": "ember",
-    "level": 5
-  },
-  {
-    "id": "blaziken",
-    "name": "blaziken",
-    "type": "fire",
-    "type2": "fighting",
-    "attack": "flamethrower",
-    "level": 36
-  },
-  {
-    "id": "pikachu",
-    "name": "pikachu",
-    "type": "electric",
-    "attack": "thundershock",
-    "level": 5
-  }
-]
+    {
+      "id": "charmander",
+      "name": "charmander",
+      "type": "fire",
+      "attack": "ember",
+      "level": 5
+    },
+    {
+      "id": "blaziken",
+      "name": "blaziken",
+      "type": "fire",
+      "type2": "fighting",
+      "attack": "flamethrower",
+      "level": 36
+    },
+    {
+      "id": "pikachu",
+      "name": "pikachu",
+      "type": "electric",
+      "attack": "thundershock",
+      "level": 5
+    },
+    {
+      "id": "mudkip",
+      "name": "mudkip",
+      "type": "water",
+      "type2": null,
+      "attack": "water gun",
+      "level": 5
+    }
+  ]
 }

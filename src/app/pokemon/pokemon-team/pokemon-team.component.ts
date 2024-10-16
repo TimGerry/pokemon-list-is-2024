@@ -13,6 +13,14 @@ export class PokemonTeamComponent implements OnInit {
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
+    this.load();
+  }
+  
+  addPokemon(pokemonToAdd: Omit<Pokemon, 'id'>) {
+    this.pokemonService.create(pokemonToAdd).subscribe(() => this.load());
+  }
+
+  load() {
     this.pokemonService.getAll().subscribe(data => this.pokemonList = data);
   }
 }

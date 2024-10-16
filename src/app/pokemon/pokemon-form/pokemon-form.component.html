@@ -1,1 +1,67 @@
-<h2>Add your pokémon! (COMING SOON)</h2>
+<h2>Add your pokémon!</h2>
+
+<form [formGroup]="pokemonForm" (ngSubmit)="submit()">
+    <div>
+        <label for="pokemonNameInput">Name: </label>
+        <input type="text" id="pokemonNameInput" formControlName="name">
+        @if(pokemonForm.controls.name.touched && pokemonForm.controls.name.hasError('required')) {
+            <p class="text-danger">Name is required!</p>
+        }
+        @if(pokemonForm.controls.name.touched && pokemonForm.controls.name.hasError('minlength')) {
+            <p class="text-danger">Name must be 3 characters or longer!</p>
+        }
+        @if(pokemonForm.controls.name.touched && pokemonForm.controls.name.hasError('invalidPokemon')) {
+            <p class="text-danger">{{pokemonForm.controls.name.getError('invalidPokemon')}}</p>
+        }
+    </div>
+    <div>
+        <label for="pokemonTypeInput">Type: </label>
+        <input type="text" id="pokemonTypeInput" formControlName="type">
+        @if(pokemonForm.controls.type.touched && pokemonForm.controls.type.hasError('required')) {
+            <p class="text-danger">Type is required!</p>
+        }
+        @if(pokemonForm.controls.type.touched && pokemonForm.controls.type.hasError('invalidType')) {
+            <p class="text-danger">{{pokemonForm.controls.type.getError('invalidType')}}</p>
+        }
+    </div>
+    <div>
+        <label for="pokemonType2Input">Type2: </label>
+        <input type="text" id="pokemonType2Input" formControlName="type2">
+        @if(pokemonForm.controls.type2?.touched && pokemonForm.controls.type2?.hasError('invalidType')) {
+            <p class="text-danger">{{pokemonForm.controls.type2?.getError('invalidType')}}</p>
+        }
+        @if(pokemonForm.controls.type.touched && pokemonForm.controls.type2?.touched && pokemonForm.hasError('duplicateType')) {
+            <p class="text-danger">{{pokemonForm.getError('duplicateType')}}</p>
+        }
+    </div>
+    <div>
+        <label for="pokemonAttackInput">Attack: </label>
+        <input type="text" id="pokemonAttackInput" formControlName="attack">
+        @if(pokemonForm.controls.attack.touched && pokemonForm.controls.attack.hasError('required')) {
+            <p class="text-danger">Attack is required!</p>
+        }
+    </div>
+    <div>
+        <label for="pokemonLevelInput">Level: </label>
+        <input type="number" id="pokemonLevelInput" formControlName="level">
+        @if(pokemonForm.controls.level.touched && pokemonForm.controls.level.hasError('required')) {
+            <p class="text-danger">Level is required!</p>
+        }
+        @if(pokemonForm.controls.level.touched && 
+        (pokemonForm.controls.level.hasError('min') || pokemonForm.controls.level.hasError('max'))) {
+            <p class="text-danger">Level must be between 1 and 100!</p>
+        }
+    </div>
+
+    @if(pokemonForm.pending) {
+        <app-loading></app-loading>
+    }
+
+    @if(pokemonForm.controls.name.pending) {
+        <p>Checking the pokemon name...</p>
+    }
+
+    <button [disabled]="!pokemonForm.valid">Add!</button>
+    <button type="button" (click)="logForm()">Log!</button>
+    <button type="button" (click)="pokemonForm.reset()">Reset!</button>
+</form>

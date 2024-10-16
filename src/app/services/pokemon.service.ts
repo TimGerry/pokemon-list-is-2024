@@ -24,6 +24,10 @@ export class PokemonService {
       assert(assertIsPokemon)
     );
   }
+
+  create(pokemonToCreate: Omit<Pokemon, 'id'>): Observable<void> {
+    return this.httpClient.post<void>(BASE_URL, { id: pokemonToCreate.name.toLowerCase(), ... pokemonToCreate });
+  }
 }
 
 const assert = <T>(
