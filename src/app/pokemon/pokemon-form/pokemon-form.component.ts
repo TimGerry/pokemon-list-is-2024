@@ -22,14 +22,15 @@ export class PokemonFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemonForm = this.nnfb.group<PokemonForm>({
-      name: this.nnfb.control('mudkip', [Validators.required, Validators.minLength(3)],  pokemonValidatorFn),
+      // name: this.nnfb.control('mudkip', [Validators.required, Validators.minLength(3)],  pokemonValidatorFn),
+      name: this.nnfb.control('mudkip', [Validators.required, Validators.minLength(3)]),
       type: this.nnfb.control('water', [Validators.required, typeValidatorFn]),
       type2: this.nnfb.control(undefined, typeValidatorFn),
       attack: this.nnfb.control('', Validators.required),
       level: this.nnfb.control(0, [Validators.required, Validators.min(1), Validators.max(100)]),
     }, { validators: duplicateTypeValidatorFn });
 
-    this.pokemonForm.controls.name.disable();
+    // this.pokemonForm.controls.name.disable();
   }
 
   submit() {
