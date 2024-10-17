@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Signal } from '@angular/core';
 import { Pokemon } from '../../models/pokemon.model';
 import { PokemonService } from '../../services/pokemon.service';
 import { Observable } from 'rxjs';
@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
   styleUrl: './pokemon-team.component.scss'
 })
 export class PokemonTeamComponent implements OnInit {
-  pokemon$!: Observable<Pokemon[] | undefined>
+  pokemonList!: Signal<Pokemon[] | undefined>;
 
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
-    this.pokemon$ = this.pokemonService.pokemon$;
+    this.pokemonList = this.pokemonService.pokemonList;
   }
   
   addPokemon(pokemonToAdd: Omit<Pokemon, 'id'>) {

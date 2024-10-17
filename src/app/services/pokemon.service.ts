@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { assertIsPokemon, assertIsPokemonArray, Pokemon } from '../models/pokemon.model';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, map, Observable, OperatorFunction, tap } from 'rxjs';
@@ -10,8 +10,11 @@ const BASE_URL = environment.baseUrl + '/pokemon'
   providedIn: 'root'
 })
 export class PokemonService {
-  #pokemonSubject = new BehaviorSubject<Pokemon[] | undefined>(undefined);
-  public pokemon$ = this.#pokemonSubject.asObservable();
+  // #pokemonSubject = new BehaviorSubject<Pokemon[] | undefined>(undefined);
+  // public pokemon$ = this.#pokemonSubject.asObservable();
+
+  #pokemonSignal = signal<Pokemon[] | undefined>(undefined);
+  public pokemonList = this.#pokemonSignal.asReadonly();
 
   constructor(private httpClient: HttpClient) {
     this.load();
@@ -31,14 +34,14 @@ export class PokemonService {
   train(pokemonTrain: Pokemon): Observable<Pokemon> {
     return this.httpClient.put<unknown>(`${BASE_URL}/${pokemonTrain.id}`, { ...pokemonTrain, level: ++pokemonTrain.level }).pipe(
       assert(assertIsPokemon),
-      tap(() => this.load())
+      tap(data => this.#pokemonSignal.update(oldData => oldData?.map(p => p.id === data.id ? data : p)))
     )
   }
 
   load() {
     this.httpClient.get<unknown>(BASE_URL).pipe(
       assert(assertIsPokemonArray)
-    ).subscribe(data => this.#pokemonSubject.next(data));
+    ).subscribe(data => this.#pokemonSignal.set(data));
   }
 }
 

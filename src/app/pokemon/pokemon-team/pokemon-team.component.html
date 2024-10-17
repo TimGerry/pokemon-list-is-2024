@@ -1,14 +1,14 @@
 <h2>Pokémon team</h2>
 
-@if ({ pokemonList: (pokemon$ | async)}; as data) {
-  @if (!data.pokemonList) {
+<ng-container *rxLet="pokemonList; let data">
+  @if (!data) {
     <app-loading>
       <b>Loading...</b>
     </app-loading>
   }
   @else {
-    <app-pokemon-list [pokemonList]="data.pokemonList"></app-pokemon-list>
+    <app-pokemon-list [pokemonList]="data"></app-pokemon-list>
   }
-}
+</ng-container>
 
 <app-pokemon-form (pokemonAdded)="addPokemon($event)"></app-pokemon-form>

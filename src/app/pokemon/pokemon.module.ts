@@ -12,13 +12,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HoverDirective } from '../directives/hover.directive';
 import { UnlessDirective } from '../directives/unless.directive';
 import { pokemonRoutes } from './pokemon.routes';
+import { RxLet } from '@rx-angular/template/let';
 
 
 
 @NgModule({
   declarations: [PokemonFormComponent, PokemonListComponent, PokemonTeamComponent, PokemonTrainingComponent],
   imports: [
-    CommonModule, LoadingComponent, OptionalPipe, RouterModule, ReactiveFormsModule, HoverDirective, UnlessDirective
+    CommonModule, LoadingComponent, OptionalPipe, RouterModule, ReactiveFormsModule, HoverDirective, UnlessDirective, RxLet
   ],
   providers: [ 
     PokemonService,
