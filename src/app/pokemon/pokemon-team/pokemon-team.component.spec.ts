@@ -2,6 +2,7 @@ import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angul
 
 import { PokemonTeamComponent } from './pokemon-team.component';
 import { Pokemon } from '../../models/pokemon.model';
+import { of } from 'rxjs';
 
 describe('PokemonTeamComponent', () => {
   let component: PokemonTeamComponent;
@@ -30,7 +31,7 @@ describe('PokemonTeamComponent', () => {
       { id: 'blaziken', name: 'blaziken', type: 'fire', type2: 'fighting', level: 36, attack: 'flamethrower' },
       { id: 'pikachu', name: 'pikachu', type: 'electric', level: 5, attack: 'thundershock' }
     ];
-    component.pokemonList = expected;
+    component.pokemon$ = of(expected);
 
     // act
     fixture.detectChanges();

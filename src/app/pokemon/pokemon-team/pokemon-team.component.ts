@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../../models/pokemon.model';
 import { PokemonService } from '../../services/pokemon.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-team',
@@ -8,19 +9,15 @@ import { PokemonService } from '../../services/pokemon.service';
   styleUrl: './pokemon-team.component.scss'
 })
 export class PokemonTeamComponent implements OnInit {
-  pokemonList: Pokemon[] | undefined; 
+  pokemon$!: Observable<Pokemon[] | undefined>
 
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
-    this.load();
+    this.pokemon$ = this.pokemonService.pokemon$;
   }
   
   addPokemon(pokemonToAdd: Omit<Pokemon, 'id'>) {
-    this.pokemonService.create(pokemonToAdd).subscribe(() => this.load());
-  }
-
-  load() {
-    this.pokemonService.getAll().subscribe(data => this.pokemonList = data);
+    this.pokemonService.create(pokemonToAdd);
   }
 }

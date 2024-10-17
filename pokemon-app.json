@@ -5,7 +5,7 @@
       "name": "charmander",
       "type": "fire",
       "attack": "ember",
-      "level": 5
+      "level": 88
     },
     {
       "id": "blaziken",
@@ -29,6 +29,14 @@
       "type2": null,
       "attack": "water gun",
       "level": 5
+    },
+    {
+      "id": "mr-mime",
+      "name": "mr-mime",
+      "type": "psychic",
+      "type2": null,
+      "attack": "encore",
+      "level": 25
     }
   ]
 }
