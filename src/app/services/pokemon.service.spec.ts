@@ -6,7 +6,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { Pokemon } from '../models/pokemon.model';
 import { lastValueFrom } from 'rxjs';
 
-fdescribe('PokemonService', () => {
+describe('PokemonService', () => {
   let service: PokemonService;
   let httpMock: HttpTestingController;
 
