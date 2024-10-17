@@ -6,11 +6,12 @@ import { PokemonTeamComponent } from './pokemon-team/pokemon-team.component';
 import { PokemonTrainingComponent } from './pokemon-training/pokemon-training.component';
 import { LoadingComponent } from '../components/loading/loading.component';
 import { OptionalPipe } from '../pipes/optional.pipe';
-import { RouterModule } from '@angular/router';
+import { provideRouter, RouterModule, withComponentInputBinding } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HoverDirective } from '../directives/hover.directive';
 import { UnlessDirective } from '../directives/unless.directive';
+import { pokemonRoutes } from './pokemon.routes';
 
 
 
@@ -19,6 +20,9 @@ import { UnlessDirective } from '../directives/unless.directive';
   imports: [
     CommonModule, LoadingComponent, OptionalPipe, RouterModule, ReactiveFormsModule, HoverDirective, UnlessDirective
   ],
-  providers: [ PokemonService ]
+  providers: [ 
+    PokemonService,
+    provideRouter(pokemonRoutes, withComponentInputBinding())
+   ]
 })
 export class PokemonModule { }
